@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
 
 export class Inicio extends Component {
     render() {
         return (
             <View style={estilos.containerPrincipal}>
-
+                <Text>Inicio</Text>
             </View>
         )
     }
@@ -16,6 +16,5 @@ export class Inicio extends Component {
 const estilos = StyleSheet.create({
     containerPrincipal: {
         flex: 1,
-        backgroundColor: 'red'
     }
 })
