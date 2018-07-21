@@ -17,4 +17,4 @@ function rotear(ROTA_BASE, {metodo, url, headers, data}) {
 	})
 }
 
-export default (rota) => rotear(rota.ROTA_BASE, rota)
+export default (rota) => rotear('https://chord.app/api', rota)
