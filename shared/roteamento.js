@@ -6,44 +6,33 @@ import { Carregamento } from './paginas/Carregamento'
 import { Inicio } from './paginas/Inicio'
 import { Login } from './paginas/Login'
 
+import { TemaDefault } from './temas'
+
 /***************************** */
 
-const EstiloHeader = {
-	backgroundColor: '#fff',
-	borderBottomColor: '#eee',
-	borderBottomWidth: 0.6,
-	elevation: 0,
-
-}
-
-
- const StackPrincipal = createStackNavigator(
- 	{
-    	Inicio,
+const StackPrincipal = createStackNavigator(
+	{
+		Inicio,
 	},
 	{
-		navigationOptions: {
-			headerStyle: EstiloHeader,
-		}
+		navigationOptions: TemaDefault.navigationOptions
 	}
 )
 
- const StackAutenticacao = createStackNavigator(
- 	{
-    	Login,
+const StackAutenticacao = createStackNavigator(
+	{
+		Login,
 	}, {
-		navigationOptions: {
-			headerStyle: EstiloHeader,
-		}
+		navigationOptions: TemaDefault.navigationOptions
 	}
 )
 
 export default createSwitchNavigator(
-    {
-        Carregamento,
-        StackPrincipal,
-        StackAutenticacao,
-    }, {
-        initialRouteName: 'Carregamento'
-    }
+	{
+		Carregamento,
+		StackPrincipal,
+		StackAutenticacao,
+	}, {
+		initialRouteName: 'Carregamento'
+	}
 )

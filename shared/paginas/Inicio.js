@@ -6,15 +6,17 @@ const estilos = StyleSheet.create({
     containerPrincipal: {
         flex: 1,
         backgroundColor: '#fff',
-        
     }
 })
 
 export class Inicio extends Component {
+    static navigationOptions = {
+        title: 'Início'
+    }
+
     render() {
         return (
             <View style={estilos.containerPrincipal}>
-                <Text>Inicio</Text>
             </View>
         )
     }

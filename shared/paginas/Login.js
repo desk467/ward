@@ -1,19 +1,110 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, TextInput, Text, StyleSheet, TouchableNativeFeedback } from 'react-native'
+import { TemaDefault } from '../temas';
 
 
 const estilos = StyleSheet.create({
+    logo: {
+        backgroundColor: TemaDefault.cores.cinzaClaro,
+        width: '100%',
+        flex: 1,
+    },
     containerPrincipal: {
         flex: 1,
+        padding: 16,
         backgroundColor: '#fff',
+        flexDirection: 'column',
+    },
+    containerFilho: {
+        marginTop: 8,
+        marginBottom: 8,
+    },
+    containerForm: {
+        flex: 2,
+        marginTop: 12,
+        alignSelf: 'center',
+        width: '82%',
+    },
+    containerInput: {
+        margin: 4,
+        padding: 6,
+        flexDirection: 'row',
+    },
+    inputFilho: {
+        width: '100%'
+    },
+    containerInputTexto: {
+        borderRadius: 3,
+        paddingTop: 2,
+        paddingBottom: 2,
+        backgroundColor: TemaDefault.cores.cinzaClaro
+    },
+    botao: {
+        marginTop: 24,
+        padding: 8,
+        paddingLeft: 16,
+        paddingRight: 16,
+        borderRadius: 3,
+        borderBottomWidth: 2,
+        borderBottomColor: TemaDefault.cores.vermelhoEscuro,
+        backgroundColor: TemaDefault.cores.vermelho,
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '60%',
+    },
+    botaoTexto: {
+        color: TemaDefault.cores.branco
     }
 })
 
 export class Login extends Component {
+
+    static navigationOptions = {
+        title: 'Entrar'
+    }
+
+    renderLogo() {
+        return (
+            <View style={estilos.logo}>
+
+            </View>
+        )
+    }
+
+    renderFormLogin() {
+        return (
+            <View style={estilos.containerForm}>
+                <View style={[estilos.containerInput, estilos.containerInputTexto]}>
+                    <TextInput
+                        style={estilos.inputFilho}
+                        placeholder="e-mail"
+                        keyboardType="email-address"
+                    />
+                </View>
+                <View style={[estilos.containerInput, estilos.containerInputTexto]}>
+                    <TextInput
+                        style={estilos.inputFilho}
+                        placeholder="senha"
+                        secureTextEntry={true}
+                    />
+                </View>
+                <TouchableNativeFeedback>
+                    <View style={[estilos.containerInput, estilos.botao]}>
+                        <Text style={estilos.botaoTexto}>
+                            Entrar
+                        </Text>
+                    </View>
+                </TouchableNativeFeedback>
+            </View>
+        )
+    }
+
     render() {
         return (
             <View style={estilos.containerPrincipal}>
-                <Text>Login</Text>
+                {this.renderLogo.bind(this)()}
+                {this.renderFormLogin.bind(this)()}
             </View>
         )
     }
