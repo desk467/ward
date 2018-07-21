@@ -1,7 +1,11 @@
 /** @format */
 
-import {AppRegistry} from 'react-native';
-import App from './App';
-import {name as appName} from './app.json';
+import { AppRegistry } from 'react-native'
 
-AppRegistry.registerComponent(appName, () => App);
+import Roteamento from "./shared/roteamento"
+
+import { name as appName } from './app.json'
+
+AppRegistry.registerComponent(
+    appName, () => Roteamento
+)
