@@ -8,13 +8,35 @@ import { Login } from './paginas/Login'
 
 /***************************** */
 
- const StackPrincipal = createStackNavigator({
-    Inicio,
-})
+const EstiloHeader = {
+	backgroundColor: '#fff',
+	borderBottomColor: '#eee',
+	borderBottomWidth: 0.6,
+	elevation: 0,
 
- const StackAutenticacao = createStackNavigator({
-    Login,
-})
+}
+
+
+ const StackPrincipal = createStackNavigator(
+ 	{
+    	Inicio,
+	},
+	{
+		navigationOptions: {
+			headerStyle: EstiloHeader,
+		}
+	}
+)
+
+ const StackAutenticacao = createStackNavigator(
+ 	{
+    	Login,
+	}, {
+		navigationOptions: {
+			headerStyle: EstiloHeader,
+		}
+	}
+)
 
 export default createSwitchNavigator(
     {
@@ -22,9 +44,6 @@ export default createSwitchNavigator(
         StackPrincipal,
         StackAutenticacao,
     }, {
-        initialRouteName: 'Carregamento',
-    	navigationOptions: {
-        	header: null,
-    	}
+        initialRouteName: 'Carregamento'
     }
 )

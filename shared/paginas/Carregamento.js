@@ -23,7 +23,7 @@ export class Carregamento extends Component {
 const estilos = StyleSheet.create({
     containerPrincipal: {
         flex: 1,
-        backgroundColor: '#eee',
+        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center'
     }
