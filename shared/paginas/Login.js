@@ -12,7 +12,7 @@ const estilos = StyleSheet.create({
     containerPrincipal: {
         flex: 1,
         padding: 16,
-        backgroundColor: '#fff',
+        backgroundColor: TemaDefault.cores.branco,
         flexDirection: 'column',
     },
     containerFilho: {
@@ -55,6 +55,19 @@ const estilos = StyleSheet.create({
     },
     botaoTexto: {
         color: TemaDefault.cores.branco
+    },
+    footer: {
+        backgroundColor: TemaDefault.cores.branco,
+        bottom: 0,
+        left: 0,
+        width: '100%',
+        padding: 8,
+        alignItems: 'flex-end',
+    },
+    footerTexto: {
+        color: TemaDefault.cores.preto,
+        fontWeight: '300',
+        fontSize: 12,
     }
 })
 
@@ -68,6 +81,14 @@ export class Login extends Component {
         return (
             <View style={estilos.logo}>
 
+            </View>
+        )
+    }
+
+    renderFooter() {
+        return (
+            <View style={estilos.footer}>
+                <Text style={estilos.footerTexto}>{"ward. feito com amor e carinho :)"}</Text>
             </View>
         )
     }
@@ -102,10 +123,13 @@ export class Login extends Component {
 
     render() {
         return (
-            <View style={estilos.containerPrincipal}>
-                {this.renderLogo.bind(this)()}
-                {this.renderFormLogin.bind(this)()}
-            </View>
+            <>
+                <View style={estilos.containerPrincipal}>
+                    {this.renderLogo.bind(this)()}
+                    {this.renderFormLogin.bind(this)()}
+                </View>
+                {this.renderFooter.bind(this)()}
+            </>
         )
     }
 }
