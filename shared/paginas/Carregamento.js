@@ -2,14 +2,19 @@ import React, { Component } from 'react'
 import { ActivityIndicator, View, StyleSheet } from 'react-native'
 
 import { TemaDefault } from '../temas'
-
+import { getSessao } from '../Sessao'
 
 export class Carregamento extends Component {
     componentDidMount() {
         setTimeout(() => {
-            this.props.navigation.navigate('Login')
-
-        }, 1000)
+            getSessao().then(sessao => {
+                if (sessao && sessao.token) {
+                    this.props.navigation.navigate('Inicio')
+                } else {
+                    this.props.navigation.navigate('Login')
+                }
+            })
+        }, 500)
     }
 
     render() {

@@ -1,12 +1,9 @@
 export const Chord = {
-    ROTA_BASE = 'https://chord.app/api',
-
-
-    logar(email, password) {
+    logar({ email, senha }) {
         return {
-            url: '/logar'
+            url: '/logar',
             metodo: 'post',
-            data: { email, password }
+            data: { email, senha }
         }
     },
 
@@ -14,7 +11,7 @@ export const Chord = {
         // a resposta é um json com bastante lixo,
         // só interessa o campo tarefas.
         return {
-            url: '/cardapio'
+            url: '/cardapio',
             metodo: 'get'
         }
     },
@@ -33,7 +30,7 @@ export const Chord = {
             metodo: 'patch',
             data: justificativa,
         }
-    }.
+    },
 
     resumirTarefa(tarefaId) {
         return {
@@ -56,7 +53,7 @@ export const Chord = {
         return {
             url: `/tarefas/${idTarefa}/desconcluir`,
             metodo: 'patch',
-            headers: { 'Content-type': 'text/plain' } 
+            headers: { 'Content-type': 'text/plain' }
         }
     },
 }

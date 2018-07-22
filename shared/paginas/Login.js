@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
-import { View, TextInput, Text, StyleSheet, TouchableNativeFeedback } from 'react-native'
-import { TemaDefault } from '../temas';
+import { View, TextInput, Text, ActivityIndicator, StyleSheet, TouchableOpacity, TouchableNativeFeedback, Platform } from 'react-native'
+import { TemaDefault } from '../temas'
+
+import executarServico from '../services/executarServico'
+import { Chord } from '../services/Chord'
+
+import { criarSessao } from '../Sessao'
 
 
 const estilos = StyleSheet.create({
@@ -77,6 +82,29 @@ export class Login extends Component {
         title: 'Entrar'
     }
 
+    state = {
+        email: '',
+        senha: '',
+        carregando: false,
+    }
+
+    onInputChanged(campo) {
+        return (valor) => {
+            this.setState({ [campo]: valor })
+        }
+    }
+
+    onEntrarPressed() {
+        this.setState({ carregando: true })
+
+        executarServico(Chord.logar(this.state)).then(response => criarSessao(response.data)).then(() => {
+            this.setState({ carregando: false })
+            this.props.navigation.navigate('Inicio')
+        }).catch(err => {
+            this.setState({ carregando: false })
+        })
+    }
+
     renderLogo() {
         return (
             <View style={estilos.logo}>
@@ -93,6 +121,29 @@ export class Login extends Component {
         )
     }
 
+    renderBotaoEntrar() {
+        const Touchable = Platform.select({ ios: TouchableOpacity, android: TouchableNativeFeedback })
+
+        if (this.state.carregando) {
+            return (
+                <View style={[estilos.containerInput, estilos.botao]}>
+                    <ActivityIndicator
+                        size="small"
+                        color={TemaDefault.cores.branco}
+                    />
+                </View>
+            )
+        } else {
+            return (
+                <Touchable onPress={this.onEntrarPressed.bind(this)}>
+                    <View style={[estilos.containerInput, estilos.botao]}>
+                        <Text style={estilos.botaoTexto}>Entrar</Text>
+                    </View>
+                </Touchable>
+            )
+        }
+    }
+
     renderFormLogin() {
         return (
             <View style={estilos.containerForm}>
@@ -101,6 +152,8 @@ export class Login extends Component {
                         style={estilos.inputFilho}
                         placeholder="e-mail"
                         keyboardType="email-address"
+                        value={this.state.email}
+                        onChangeText={this.onInputChanged.bind(this)('email')}
                     />
                 </View>
                 <View style={[estilos.containerInput, estilos.containerInputTexto]}>
@@ -108,15 +161,11 @@ export class Login extends Component {
                         style={estilos.inputFilho}
                         placeholder="senha"
                         secureTextEntry={true}
+                        value={this.state.senha}
+                        onChangeText={this.onInputChanged.bind(this)('senha')}
                     />
                 </View>
-                <TouchableNativeFeedback>
-                    <View style={[estilos.containerInput, estilos.botao]}>
-                        <Text style={estilos.botaoTexto}>
-                            Entrar
-                        </Text>
-                    </View>
-                </TouchableNativeFeedback>
+                {this.renderBotaoEntrar.bind(this)()}
             </View>
         )
     }
