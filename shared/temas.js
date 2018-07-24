@@ -12,7 +12,9 @@ const TemaDefaultCores = {
     vermelho: '#FF3859',
     vermelhoEscuro: '#E53250',
     verde: '#41C583',
-    verdeEscuro: '#39AB72'
+    verdeEscuro: '#39AB72',
+    amarelo: '#FFD84C',
+    amareloEscuro: '#CCAD3D',
 }
 
 export const TemaDefault = {

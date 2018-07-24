@@ -10,6 +10,7 @@
     "axios": "^0.18.0",
     "react": "16.4.1",
     "react-native": "0.56.0",
+    "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^2.8.0"
   },
   "devDependencies": {
@@ -17,6 +18,11 @@
     "babel-preset-react-native": "^5",
     "jest": "23.4.1",
     "react-test-renderer": "16.4.1"
+  },
+  "rnpm": {
+    "assets": [
+      "./shared/assets/fonts"
+    ]
   },
   "jest": {
     "preset": "react-native"

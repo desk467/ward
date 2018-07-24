@@ -99,7 +99,7 @@ export class Login extends Component {
 
         executarServico(Chord.logar(this.state)).then(response => criarSessao(response.data)).then(() => {
             this.setState({ carregando: false })
-            this.props.navigation.navigate('Inicio')
+            this.props.navigation.navigate('Carregamento')
         }).catch(err => {
             this.setState({ carregando: false })
         })
